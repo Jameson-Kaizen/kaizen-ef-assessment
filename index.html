@@ -4,7 +4,7 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Executive Function Assessment | Kaizen Education Services</title>
-<meta name="description" content="A full self-assessment of your executive functioning across fourteen skills. About 6 minutes, with a personalised read at the end."/>
+<meta name="description" content="A full self-assessment of your executive functioning across fourteen skills, grouped into four areas. About 5 minutes, with a personalised read at the end."/>
 <link rel="icon" href="og-share.png"/>
 <meta property="og:type" content="website"/>
 <meta property="og:title" content="Executive Function Assessment"/>
@@ -47,7 +47,7 @@
   .wrap{max-width:640px;margin:0 auto;}
   .card{background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);
     padding:28px 26px;box-shadow:0 2px 14px rgba(36,108,69,.06);}
-  .prog{max-width:640px;margin:0 auto 10px;}
+  .prog{position:sticky;top:8px;z-index:5;max-width:640px;margin:0 auto 10px;background:#f6f8f6;padding:4px 0;}
   .prog-track{height:6px;border-radius:999px;background:var(--line);overflow:hidden;}
   .prog-fill{height:100%;background:var(--g);border-radius:999px;transition:width .3s ease;}
   .prog-lbl{font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin:0 0 6px;text-align:center;}
@@ -66,13 +66,18 @@
   .btn-ghost{background:transparent;color:var(--gd);border:1px solid var(--line);}
   .btn-ghost:hover{background:var(--soft);}
   .btn-block{display:block;width:100%;}
-  .qtext{font-size:19px;font-weight:700;margin:2px 0 18px;}
-  .opts{display:flex;flex-direction:column;gap:10px;}
-  .opt{text-align:left;background:var(--soft);border:1.5px solid var(--line);border-radius:12px;
-    padding:14px 16px;font-size:16px;font-weight:600;color:var(--ink);cursor:pointer;font-family:inherit;transition:background .1s,border-color .1s;}
-  .opt:hover{background:#e6f1ea;border-color:var(--g);}
-  .opt.sel{background:var(--g);color:#fff;border-color:var(--gd);}
-  .qnav{display:flex;justify-content:space-between;align-items:center;margin-top:20px;}
+  .clabel{font-size:12px;font-weight:700;color:var(--g);text-transform:uppercase;letter-spacing:.06em;margin:0 0 8px;}
+  .cname{font-size:22px;font-weight:800;margin:0 0 10px;}
+  .legend{font-size:12.5px;color:var(--muted);background:var(--soft);border-radius:10px;padding:9px 12px;margin:0 0 16px;}
+  .mrow{margin:0 0 18px;padding:0 0 16px;border-bottom:1px solid var(--line);}
+  .mrow:last-of-type{border-bottom:none;}
+  .mq{font-size:15.5px;font-weight:600;margin:0 0 9px;}
+  .scale{display:flex;gap:6px;}
+  .sc{flex:1;min-width:0;text-align:center;background:var(--soft);border:1.5px solid var(--line);border-radius:9px;
+    padding:9px 3px;font-size:12px;font-weight:600;color:var(--ink);cursor:pointer;font-family:inherit;transition:background .1s,border-color .1s;}
+  .sc:hover{background:#e6f1ea;border-color:var(--g);}
+  .sc.sel{background:var(--g);color:#fff;border-color:var(--gd);}
+  .qnav{display:flex;justify-content:space-between;align-items:center;margin-top:8px;}
   .link{background:none;border:none;color:var(--gd);font-weight:600;font-size:15px;cursor:pointer;font-family:inherit;padding:6px;}
   .link:disabled{color:#b6c9bd;cursor:default;}
   .input{width:100%;font-size:16px;font-family:inherit;color:var(--ink);background:#fafdfb;border:1.5px solid var(--line);
@@ -82,7 +87,17 @@
   .consent input{margin-top:2px;width:18px;height:18px;flex:0 0 auto;accent-color:var(--g);}
   .err{color:var(--warn);font-size:13px;font-weight:600;margin:10px 0 0;text-align:center;}
   .r-tag{font-size:12px;font-weight:700;color:var(--gd);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;}
-  .bars{margin:18px 0;}
+  .idx{display:flex;align-items:baseline;gap:10px;margin:6px 0 4px;}
+  .idx .num{font-size:40px;font-weight:800;color:var(--gd);line-height:1;}
+  .idx .of{font-size:14px;color:var(--muted);font-weight:600;}
+  .idxbar{height:10px;border-radius:999px;background:var(--soft);overflow:hidden;margin:6px 0 4px;}
+  .idxbar > div{height:100%;border-radius:999px;background:var(--g);}
+  .summary{border-radius:12px;padding:12px 15px;margin:14px 0;font-size:14.5px;}
+  .summary.win{background:#eef6f0;border:1px solid #cfe6d7;}
+  .summary.focus{background:#fbf6ec;border:1px solid #ecdcbd;}
+  .summary b{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px;}
+  .clh{font-size:13px;font-weight:800;color:var(--ink);margin:20px 0 10px;padding-top:6px;border-top:2px solid var(--line);}
+  .bars{margin:6px 0 0;}
   .barrow{margin-bottom:12px;}
   .barhead{display:flex;justify-content:space-between;font-size:14px;margin-bottom:4px;}
   .barhead .nm{font-weight:600;}
@@ -104,7 +119,7 @@
   .cta .btn:hover{background:#eaf3ee;}
   .cta small{display:block;margin-top:12px;color:#a9c3b4;font-size:12.5px;}
   .foot{max-width:640px;margin:20px auto 0;text-align:center;font-size:12px;color:#8a978f;}
-  @media(max-width:480px){.card{padding:22px 16px;}h1{font-size:22px;}}
+  @media(max-width:480px){.card{padding:22px 16px;}h1{font-size:22px;}.sc{font-size:11px;padding:9px 2px;}}
 </style>
 </head>
 <body>
@@ -120,17 +135,27 @@
   <section id="intro" class="card" hidden>
     <h1>Executive Function Assessment</h1>
     <p class="lead">Executive functioning is the set of mental skills your brain uses to get things done: controlling impulses, holding information, managing emotion, starting and focusing, planning, staying organized, adapting, and more. Everyone is stronger in some than others.</p>
-    <p class="lead">This is our full assessment. It reads fourteen of those skills and shows you a complete map of your strengths and growth areas. About 6 minutes. Answer honestly, accuracy depends on it. You get a personalised read at the end.</p>
+    <p class="lead">This is our full assessment. It reads fourteen skills, grouped into four areas, and shows you a complete map of your strengths and growth areas. About 5 minutes. Answer honestly, accuracy depends on it. You get a personalised read at the end.</p>
+    <button class="btn btn-block" id="resume" hidden>Resume where you left off</button>
     <button class="btn btn-block" id="start">Start the assessment</button>
+    <button class="btn btn-ghost btn-block" id="startover" hidden style="margin-top:10px">Start over</button>
     <p class="disc">This is an educational self-reflection tool, not a diagnosis or clinical assessment. It does not diagnose ADHD or any condition. Kaizen Education Services provides coaching. We are not medical or mental health professionals, and this does not replace care from a qualified professional. If you are in distress, please reach out for support.</p>
   </section>
 
+  <section id="cluster" class="card" hidden>
+    <div class="clabel" id="cl-label"></div>
+    <div class="cname" id="cl-name"></div>
+    <p class="lead" id="cl-intro"></p>
+    <button class="btn btn-block" id="cl-go">Continue</button>
+    <div class="qnav"><button class="link" id="cl-back">Back</button></div>
+  </section>
+
   <section id="q" class="card" hidden>
-    <div class="qtext" id="q-text"></div>
+    <div class="clabel" id="q-part"></div>
+    <div class="cname" id="q-domain" style="font-size:19px"></div>
+    <div class="legend">For each statement, how often is it true of you? Always means almost always, Never means almost never. On a keyboard you can press 1 to 5.</div>
     <div id="q-body"></div>
-    <div class="qnav">
-      <button class="link" id="q-back">Back</button>
-    </div>
+    <div class="qnav"><button class="link" id="q-back">Back</button></div>
   </section>
 
   <section id="gate" class="card" hidden>
@@ -149,13 +174,17 @@
     <div class="r-tag">Your Executive Function Assessment</div>
     <h1 id="r-name">Your Executive Function Assessment</h1>
     <p class="sub" id="r-sub"></p>
+    <div class="idx"><span class="num" id="r-idx"></span><span class="of">out of 100 overall</span></div>
+    <div class="idxbar"><div id="r-idxbar" style="width:0%"></div></div>
     <p class="overall" id="r-overall"></p>
-    <div class="bars" id="r-bars"></div>
+    <div id="r-summary"></div>
     <div class="ai" id="ai" hidden>
       <div class="ai-head">A personalised read on your profile</div>
       <div class="ai-body" id="ai-body"></div>
     </div>
-    <div class="sec-h">Your fourteen skills in detail</div>
+    <div class="sec-h">Your fourteen skills, by area</div>
+    <div class="bars" id="r-bars"></div>
+    <div class="sec-h">Each skill in detail</div>
     <div class="body" id="r-body"></div>
     <div class="cta">
       <p>Want help turning your growth areas into strengths? Book a free 30 minute coaching consult. We will look at your full assessment, hear what is going on, and tell you honestly whether we think we are a fit.</p>
@@ -175,6 +204,7 @@
   var AI_ENABLED = true;
   var LEAD_ENDPOINT = "https://kaizen-working-memory-quiz.jameson-84b.workers.dev";
   var BOOKING_URL = "https://api.leadconnectorhq.com/widget/booking/ktnCWMUydaVYrfYSpCdi";
+  var SAVE_KEY = "kaizen-efassess-v1";
 
   function track(n,p){ try{ if(window.gtag) gtag("event",n,p||{}); }catch(e){} }
   var ATTRIBUTION=(function(){var o={};try{var p=new URLSearchParams(location.search);
@@ -182,170 +212,254 @@
     o.referrer=document.referrer||"";return o;})();
   var $=function(id){return document.getElementById(id);};
 
-  // 5-point frequency scale. Option value = points (Almost always = 5 ... Almost never = 1).
-  var OPTS=[["Almost always",5],["Often",4],["Sometimes",3],["Rarely",2],["Almost never",1]];
-  var QUESTIONS=[
-    {id:"q1",text:"I say things in conversations that I immediately wish I could take back."},
-    {id:"q2",text:"I make decisions quickly without fully thinking through the consequences."},
-    {id:"q3",text:"I interrupt people while they're speaking, even when I'm trying not to."},
-    {id:"q4",text:"I walk into a room and forget why I went there."},
-    {id:"q5",text:"I lose my train of thought mid-sentence or mid-task."},
-    {id:"q6",text:"I have to re-read or re-listen to something multiple times before it sticks."},
-    {id:"q7",text:"I forget to follow through on things I promised to do, even when I had every intention of doing them."},
-    {id:"q8",text:"I rely on external reminders, alarms, sticky notes, other people, to remember time-sensitive tasks."},
-    {id:"q9",text:"I forget about commitments or plans until it's too late to act on them properly."},
-    {id:"q10",text:"My mood has a significant impact on my ability to get work done."},
-    {id:"q11",text:"When I get frustrated, I struggle to push through and keep going."},
-    {id:"q12",text:"I wait until the last minute and/or rush to finish tasks."},
-    {id:"q13",text:"I find it difficult to stay focused on the task(s) at hand."},
-    {id:"q14",text:"Once I start a task or project, I find myself struggling to complete it."},
-    {id:"q15",text:"When I get interrupted, I find it difficult to regain my focus and get \"back on track\"."},
-    {id:"q16",text:"I catch myself re-reading the same paragraph or replaying content without it registering."},
-    {id:"q17",text:"I check my phone or switch tabs even when I'm actively trying to focus."},
-    {id:"q18",text:"When I get interrupted, it takes real effort to find my place and get back on track."},
-    {id:"q19",text:"When I switch from one type of task to another, I need significant time to mentally transition before I can be effective."},
-    {id:"q20",text:"I start my day without a clear sense of what I need to accomplish."},
-    {id:"q21",text:"When I have a lot to do, I gravitate toward easier tasks instead of the most important ones."},
-    {id:"q22",text:"When facing a large project, I struggle to break it into manageable steps."},
-    {id:"q23",text:"My physical or digital workspace is cluttered and hard to navigate."},
-    {id:"q24",text:"I waste time searching for things I've misplaced, files, documents, everyday items."},
-    {id:"q25",text:"My organizational systems tend to collapse when life gets busy."},
-    {id:"q26",text:"I consistently underestimate how long tasks will take."},
-    {id:"q27",text:"I run late for appointments or meetings, even when I think I've given myself enough time."},
-    {id:"q28",text:"I end the day without having finished what I planned to accomplish."},
-    {id:"q29",text:"Unexpected changes to my plans or schedule throw me off significantly."},
-    {id:"q30",text:"When my original approach isn't working, I struggle to quickly come up with another."},
-    {id:"q31",text:"I find it difficult to shift focus when something urgent comes up unexpectedly."},
-    {id:"q32",text:"I make decisions without fully considering how they might play out."},
-    {id:"q33",text:"I reflect on my past mistakes to improve how I approach things going forward."},
-    {id:"q34",text:"I have a clear, realistic understanding of my own strengths and limitations."},
-    {id:"q35",text:"I start projects with enthusiasm but struggle to follow through to completion."},
-    {id:"q36",text:"I give in to immediate distractions or pleasures instead of working toward longer-term goals."},
-    {id:"q37",text:"When results aren't immediate, I find it hard to stay motivated."},
-    {id:"q38",text:"My ability to focus or make good decisions drops significantly as the day goes on."},
-    {id:"q39",text:"After a mentally demanding task, I struggle to concentrate effectively on what comes next."},
-    {id:"q40",text:"When I have too many competing demands at once, I make more mistakes than usual."},
-    {id:"q41",text:"I maintain the quality of my work even when deadlines are tight or stakes are high."},
-    {id:"q42",text:"I thrive in demanding, fast-paced environments."},
-    {id:"q43",text:"When pressure mounts, my performance tends to suffer."}
-  ];
-  var DOMAINS=[
-    {slug:"impulse-control",name:"Impulse Control",items:[1,2,3],bands:{strength:{lo:3,hi:5},developing:{lo:6,hi:10},growth:{lo:11,hi:15}}},
-    {slug:"working-memory",name:"Working Memory",items:[4,5,6],bands:{strength:{lo:3,hi:5},developing:{lo:6,hi:10},growth:{lo:11,hi:15}}},
-    {slug:"emotional-control",name:"Emotional Control",items:[7,8,9],bands:{strength:{lo:3,hi:5},developing:{lo:6,hi:10},growth:{lo:11,hi:15}}},
-    {slug:"task-initiation",name:"Task Initiation",items:[10,11,12],bands:{strength:{lo:3,hi:5},developing:{lo:6,hi:10},growth:{lo:11,hi:15}}},
-    {slug:"focused-attention",name:"Focused Attention",items:[13,14,15],bands:{strength:{lo:3,hi:5},developing:{lo:6,hi:10},growth:{lo:11,hi:15}}},
-    {slug:"planning-and-prioritization",name:"Planning and Prioritization",items:[16,17,18,19],bands:{strength:{lo:4,hi:8},developing:{lo:9,hi:13},growth:{lo:14,hi:20}}},
-    {slug:"organization",name:"Organization",items:[20,21,22],bands:{strength:{lo:3,hi:5},developing:{lo:6,hi:10},growth:{lo:11,hi:15}}},
-    {slug:"time-management",name:"Time Management",items:[23,24,25],bands:{strength:{lo:3,hi:5},developing:{lo:6,hi:10},growth:{lo:11,hi:15}}},
-    {slug:"flexible-thinking",name:"Flexible Thinking",items:[26,27,28],bands:{strength:{lo:3,hi:5},developing:{lo:6,hi:10},growth:{lo:11,hi:15}}},
-    {slug:"self-awareness",name:"Self-Awareness",items:[29,30,31],bands:{strength:{lo:3,hi:5},developing:{lo:6,hi:10},growth:{lo:11,hi:15}}},
-    {slug:"self-motivation",name:"Self-Motivation",items:[32,33,34],bands:{strength:{lo:3,hi:5},developing:{lo:6,hi:10},growth:{lo:11,hi:15}}},
-    {slug:"stress-management",name:"Stress Management",items:[35,36,37],bands:{strength:{lo:3,hi:5},developing:{lo:6,hi:10},growth:{lo:11,hi:15}}},
-    {slug:"cognitive-fatigue-mental-load",name:"Cognitive Fatigue & Mental Load",items:[38,39,40],bands:{strength:{lo:3,hi:5},developing:{lo:6,hi:10},growth:{lo:11,hi:15}}},
-    {slug:"performance-under-pressure",name:"Performance Under Pressure",items:[41,42,43],bands:{strength:{lo:3,hi:5},developing:{lo:6,hi:10},growth:{lo:11,hi:15}}}
-  ];
-  var COPY={
-    "impulse-control":{strength:"This is your capacity to think before you act. When you resist the urge to react to a situation, this allows you time to evaluate how your reaction might impact it. Excellent! Your results indicate you're able to control your impulses.",developing:"This is your capacity to think before you act. When you resist the urge to react to a situation, this allows you time to evaluate how your reaction might impact it. Your results indicate you're somewhat able to manage your impulse control.",growth:"This is your capacity to think before you act. When you resist the urge to react to a situation, this allows you time to evaluate how your reaction might impact it. Your results indicate you could use some assistance with impulse control."},
-    "working-memory":{strength:"This is your ability to hold information in memory while performing complex tasks. It also incorporates the ability to draw on past learning experiences and apply them to the situation at hand. Excellent! Your results indicate you're proficient with your working memory.",developing:"This is your ability to hold information in memory while performing complex tasks. It also incorporates the ability to draw on past learning experiences and apply them to the situation at hand. Your results indicate your working memory is somewhat satisfactory.",growth:"This is your ability to hold information in memory while performing complex tasks. It also incorporates the ability to draw on past learning experiences and apply them to the situation at hand. Your results indicate you could use some assistance with your working memory."},
-    "emotional-control":{strength:"This is the ability to manage your emotions in order to achieve goals, complete tasks, or control and direct behavior. Excellent! Your results indicate you're able to control your emotions.",developing:"This is the ability to manage your emotions in order to achieve goals, complete tasks, or control and direct behavior. Your results indicate you're somewhat able to manage your emotions.",growth:"This is the ability to manage your emotions in order to achieve goals, complete tasks, or control and direct behavior. Your results indicate you could use some assistance with emotional control."},
-    "task-initiation":{strength:"This is your ability to start work and tackle it head-on, even when it seems overwhelming or boring. Excellent! Your results indicate you're a self-starter and have no issues with task initiation.",developing:"This is your ability to start work and tackle it head-on, even when it seems overwhelming or boring. Your results indicate you're somewhat able to manage your task initiation.",growth:"This is your ability to start work and tackle it head-on, even when it seems overwhelming or boring. Your results indicate you could use some assistance with task initiation."},
-    "focused-attention":{strength:"This is the capacity to maintain your attention to a situation or task in spite of distractions, fatigue, or boredom. Excellent! Your results indicate you're proficient at sustaining your attention.",developing:"This is the capacity to maintain your attention to a situation or task in spite of distractions, fatigue, or boredom. Your results indicate you're somewhat able to sustain your attention when necessary.",growth:"This is the capacity to maintain your attention to a situation or task in spite of distractions, fatigue, or boredom. Your results indicate you could use some assistance with maintaining your attention."},
-    "planning-and-prioritization":{strength:"This is your ability to organize tasks, anticipate demands, and direct effort toward the highest-impact actions. Your results indicate strong planning and prioritization.",developing:"This is your ability to organize tasks, anticipate demands, and direct effort toward the highest-impact actions. Your results indicate some challenge with planning and prioritization.",growth:"This is your ability to organize tasks, anticipate demands, and direct effort toward the highest-impact actions. Your results indicate you could use some assistance with planning and prioritization."},
-    "organization":{strength:"This is your ability to keep track of information and materials. Excellent! Your results indicate you're proficient in organizational skills.",developing:"This is your ability to keep track of information and materials. Your results indicate you have a somewhat satisfactory grasp of organizational skills.",growth:"This is your ability to keep track of information and materials. Your results indicate you could use some assistance with organizational skills."},
-    "time-management":{strength:"This is your capacity to estimate how much time you will need to complete a task, how to best allocate your time, and how to stay within any limits and/or deadlines. Excellent! Your results indicate you're proficient at time management.",developing:"This is your capacity to estimate how much time you will need to complete a task, how to best allocate your time, and how to stay within any limits and/or deadlines. Your results indicate you're somewhat able to manage your time efficiently.",growth:"This is your capacity to estimate how much time you will need to complete a task, how to best allocate your time, and how to stay within any limits and/or deadlines. Your results indicate you could use some assistance with time management."},
-    "flexible-thinking":{strength:"This is your ability to revise plans in the face of obstacles, setbacks, new information, or mistakes. It relates to adaptability to changing conditions. Excellent! Your results indicate you're proficient at flexible thinking.",developing:"This is your ability to revise plans in the face of obstacles, setbacks, new information, or mistakes. It relates to adaptability to changing conditions. Your results indicate you're somewhat able to think flexibly.",growth:"This is your ability to revise plans in the face of obstacles, setbacks, new information, or mistakes. It relates to adaptability to changing conditions. Your results indicate you could use some assistance with flexible thinking."},
-    "self-awareness":{strength:"This is your ability to \"view\" yourself objectively and honestly recognize your strengths and needs. Excellent! Your results indicate you have a good understanding of metacognition.",developing:"This is your ability to \"view\" yourself objectively and honestly recognize your strengths and needs. Your results indicate you have a somewhat reasonable understanding of metacognition.",growth:"This is your ability to \"view\" yourself objectively and honestly recognize your strengths and needs. Your results indicate you could use some assistance with metacognition."},
-    "self-motivation":{strength:"This is your ability to set a goal, follow through, and not be distracted by peripheral events. Excellent! Your results indicate you are proficient at setting and reaching your goals.",developing:"This is your ability to set a goal, follow through, and not be distracted by peripheral events. Your results indicate you're somewhat proficient at setting and reaching your goals.",growth:"This is your ability to set a goal, follow through, and not be distracted by peripheral events. Your results indicate you could use some assistance with setting and reaching your goals."},
-    "stress-management":{strength:"This is your ability to thrive in stressful situations and cope with uncertainty, change, and performance demands. Excellent! Your results indicate you are proficient at stress management.",developing:"This is your ability to thrive in stressful situations and cope with uncertainty, change, and performance demands. Your results indicate a reasonable ability to manage stress.",growth:"This is your ability to thrive in stressful situations and cope with uncertainty, change, and performance demands. Your results indicate you could use some assistance with stress management."},
-    "cognitive-fatigue-mental-load":{strength:"This is your ability to sustain mental performance and recover effectively when facing heavy demands on attention, working memory, and decision-making. Your results indicate strong cognitive endurance and mental load management.",developing:"This is your ability to sustain mental performance and recover effectively when facing heavy demands on attention, working memory, and decision-making. Your results indicate some challenge with cognitive fatigue and mental load.",growth:"This is your ability to sustain mental performance and recover effectively when facing heavy demands on attention, working memory, and decision-making. Your results indicate you could use some assistance with cognitive fatigue and mental load."},
-    "performance-under-pressure":{strength:"This is your acute capacity to execute when it counts. Your results indicate strong performance under pressure.",developing:"This is your acute capacity to execute when it counts. Your results indicate some challenge with performance under pressure.",growth:"This is your acute capacity to execute when it counts. Your results indicate you could use some assistance with performance under pressure."}
+  // display order left->right; [full label, value, short label]
+  var OPTS=[["Almost always",5,"Always"],["Often",4,"Often"],["Sometimes",3,"Sometimes"],["Rarely",2,"Rarely"],["Almost never",1,"Never"]];
+  var QTEXT={
+    q1:"I say things in conversations that I immediately wish I could take back.",
+    q2:"I make decisions quickly without fully thinking through the consequences.",
+    q3:"I interrupt people while they're speaking, even when I'm trying not to.",
+    q4:"I walk into a room and forget why I went there.",
+    q5:"I lose my train of thought mid-sentence or mid-task.",
+    q6:"I have to re-read or re-listen to something multiple times before it sticks.",
+    q7:"I forget to follow through on things I promised to do, even when I had every intention of doing them.",
+    q8:"I rely on external reminders, alarms, sticky notes, other people, to remember time-sensitive tasks.",
+    q9:"I forget about commitments or plans until it's too late to act on them properly.",
+    q10:"My mood has a significant impact on my ability to get work done.",
+    q11:"When I get frustrated, I struggle to push through and keep going.",
+    q12:"I wait until the last minute and/or rush to finish tasks.",
+    q13:"I find it difficult to stay focused on the task(s) at hand.",
+    q14:"Once I start a task or project, I find myself struggling to complete it.",
+    q15:"When I get interrupted, I find it difficult to regain my focus and get \"back on track\".",
+    q16:"I catch myself re-reading the same paragraph or replaying content without it registering.",
+    q17:"I check my phone or switch tabs even when I'm actively trying to focus.",
+    q18:"When I get interrupted, it takes real effort to find my place and get back on track.",
+    q19:"When I switch from one type of task to another, I need significant time to mentally transition before I can be effective.",
+    q20:"I start my day without a clear sense of what I need to accomplish.",
+    q21:"When I have a lot to do, I gravitate toward easier tasks instead of the most important ones.",
+    q22:"When facing a large project, I struggle to break it into manageable steps.",
+    q23:"My physical or digital workspace is cluttered and hard to navigate.",
+    q24:"I waste time searching for things I've misplaced, files, documents, everyday items.",
+    q25:"My organizational systems tend to collapse when life gets busy.",
+    q26:"I consistently underestimate how long tasks will take.",
+    q27:"I run late for appointments or meetings, even when I think I've given myself enough time.",
+    q28:"I end the day without having finished what I planned to accomplish.",
+    q29:"Unexpected changes to my plans or schedule throw me off significantly.",
+    q30:"When my original approach isn't working, I struggle to quickly come up with another.",
+    q31:"I find it difficult to shift focus when something urgent comes up unexpectedly.",
+    q32:"I make decisions without fully considering how they might play out.",
+    q33:"I reflect on my past mistakes to improve how I approach things going forward.",
+    q34:"I have a clear, realistic understanding of my own strengths and limitations.",
+    q35:"I start projects with enthusiasm but struggle to follow through to completion.",
+    q36:"I give in to immediate distractions or pleasures instead of working toward longer-term goals.",
+    q37:"When results aren't immediate, I find it hard to stay motivated.",
+    q38:"My ability to focus or make good decisions drops significantly as the day goes on.",
+    q39:"After a mentally demanding task, I struggle to concentrate effectively on what comes next.",
+    q40:"When I have too many competing demands at once, I make more mistakes than usual.",
+    q41:"I maintain the quality of my work even when deadlines are tight or stakes are high.",
+    q42:"I thrive in demanding, fast-paced environments.",
+    q43:"When pressure mounts, my performance tends to suffer."
   };
+  var DOMAINS={
+    "impulse-control":{name:"Impulse Control",items:[q1,q2,q3],shi:5,dhi:10,def:"This is your ability to pause before you act, so you get a beat to weigh how a reaction will land.",copy:{strength:"Yours is working well. You give yourself that beat before reacting, which keeps you out of moments you would have to walk back.",developing:"This mostly holds, but under stress or speed you can act or speak before you have fully thought it through.",growth:"Right now this is a real drain. You often react faster than you would like and end up cleaning up after. It is a skill you can build, not a character flaw."}},
+    "working-memory":{name:"Working Memory",items:[q4,q5,q6],shi:5,dhi:10,def:"This is your ability to hold information in mind while you use it, and draw on what you already know.",copy:{strength:"You reliably hold information in mind while you use it, so complex tasks do not lose their thread.",developing:"You keep most of it in mind, but details slip when there is a lot going on at once.",growth:"Holding several things in mind at once is hard right now, so steps and details fall out mid-task. External systems take the load off fast."}},
+    "emotional-control":{name:"Emotional Control",items:[q7,q8,q9],shi:5,dhi:10,def:"This is how well you keep strong feelings from taking the wheel when something gets to you.",copy:{strength:"You keep your feelings in proportion, so they rarely hijack a decision or a conversation.",developing:"You usually stay steady, but a strong enough feeling or a hard enough day can still knock you off balance.",growth:"Strong emotions and small setbacks tend to hit harder than the moment calls for, and that shapes how you respond. This is trainable."}},
+    "task-initiation":{name:"Task Initiation",items:[q10,q11,q12],shi:5,dhi:10,def:"This is how easily you get yourself started, especially on the things that are easy to put off.",copy:{strength:"You get yourself started without much friction, even on the boring stuff. That is a genuine advantage.",developing:"You start clear tasks fine, but ambiguous or low-interest ones invite delay.",growth:"Getting started is one of your biggest hurdles, and the not-starting piles up. There are concrete ways to make the first step easier."}},
+    "focused-attention":{name:"Focused Attention",items:[q13,q14,q15],shi:5,dhi:10,def:"This is your ability to hold your focus on one thing without getting pulled away.",copy:{strength:"You hold focus over time, even with distractions around. That is a real asset for deep work.",developing:"Your focus holds on a good day but slips when you are tired or the task turns dull.",growth:"Distractions pull you off easily and getting back on track costs you real time. This is one of the most trainable skills there is."}},
+    "planning-and-prioritization":{name:"Planning and Prioritization",items:[q16,q17,q18,q19],shi:8,dhi:13,def:"This is how you map out what needs to happen and decide what matters most.",copy:{strength:"You map out what needs to happen and pick what matters most, so you tend to finish what you set out to do.",developing:"You plan well on good days, but on others you start without a map or chase the wrong thing first.",growth:"Without a clear plan or a sense of what matters most, effort scatters and progress is hard to see. This is very learnable."}},
+    "organization":{name:"Organization",items:[q20,q21,q22],shi:5,dhi:10,def:"This is how you keep your space, files, and information in an order you can actually work from.",copy:{strength:"Your systems work. You find what you need without friction, even when things get busy.",developing:"Your systems hold when life is calm but tend to fray during the busy stretches.",growth:"Disorganization is quietly costing you time and focus, and the systems collapse right when you need them. Simpler systems fix most of this."}},
+    "time-management":{name:"Time Management",items:[q23,q24,q25],shi:5,dhi:10,def:"This is your sense of how long things take and how you spend the hours you have.",copy:{strength:"You have a realistic feel for time and spend your hours in line with it.",developing:"You judge time well on some days, but you can underestimate how long things take.",growth:"Time tends to get away from you, so plans and estimates keep missing. A few structures make a big difference here."}},
+    "flexible-thinking":{name:"Flexible Thinking",items:[q26,q27,q28],shi:5,dhi:10,def:"This is how easily you shift gears when plans change or your first approach is not working.",copy:{strength:"You shift gears easily when plans change or your first approach is not working.",developing:"You adapt reasonably well, but sudden changes can still throw you more than you would like.",growth:"Unexpected changes knock you off course, and switching approaches is hard in the moment. Flexibility is a muscle you can grow."}},
+    "self-awareness":{name:"Self-Awareness",items:[q29,q30,q31],shi:5,dhi:10,def:"This is how clearly you read your own strengths, limits, and patterns.",copy:{strength:"You read your own strengths, limits, and patterns clearly, which makes you quick to adjust.",developing:"You know yourself fairly well, but some blind spots still catch you off guard.",growth:"Your own patterns are hard to see from the inside right now, so the same things trip you up more than once. A little structure makes them visible."}},
+    "self-motivation":{name:"Self-Motivation",items:[q32,q33,q34],shi:5,dhi:10,def:"This is your ability to keep yourself moving toward a goal after the first push wears off.",copy:{strength:"You keep yourself moving toward a goal well after the first burst of energy fades.",developing:"You follow through most of the time, but momentum can stall once the novelty wears off.",growth:"Sustaining drive past the initial spark is hard right now, so things get started and left unfinished. That gap is workable."}},
+    "stress-management":{name:"Stress Management",items:[q35,q36,q37],shi:5,dhi:10,def:"This is how you hold up when pressure and demands stack up.",copy:{strength:"You hold up well when demands stack up. Pressure does not tend to unravel you.",developing:"You manage most pressure fine, but heavier stretches can start to fray your edges.",growth:"When pressure builds, it takes a real toll on how you think and function. Learning to shed some of that load is very doable."}},
+    "cognitive-fatigue-mental-load":{name:"Cognitive Fatigue & Mental Load",items:[q38,q39,q40],shi:5,dhi:10,def:"This is how well your focus and judgment hold up as the day and the demands pile on.",copy:{strength:"Your focus and judgment hold up across a full day and a full load.",developing:"You do well until the demands really stack, then your sharpness starts to dip.",growth:"As the day and the demands build, your focus and decisions drop off noticeably. Managing the load, not gritting through it, is the fix."}},
+    "performance-under-pressure":{name:"Performance Under Pressure",items:[q41,q42,q43],shi:5,dhi:10,def:"This is how you hold, or raise, your game when the stakes are high.",copy:{strength:"You hold, or even raise, your game when the stakes are high. People rely on you in the tight moments.",developing:"You handle pressure reasonably, but high stakes can pull your performance down more than you would like.",growth:"Pressure tends to erode your performance right when it matters most. A steady routine and a few scripts change that."}}
+  };
+  var CLUSTERS=[
+    {key:"managing-yourself",name:"Managing Yourself",intro:"First, how you handle impulses, emotions, and stress in the moment. Three short groups.",domains:["impulse-control","emotional-control","stress-management"]},
+    {key:"getting-things-done",name:"Getting Things Done",intro:"Next, how you start, plan, organize, and follow through.",domains:["task-initiation","self-motivation","planning-and-prioritization","organization","time-management"]},
+    {key:"focus-and-memory",name:"Focus and Memory",intro:"You are about halfway. Now, how you hold focus and information, and how you hold up under mental load.",domains:["focused-attention","working-memory","cognitive-fatigue-mental-load"]},
+    {key:"adapting-and-self-awareness",name:"Adapting and Self-Awareness",intro:"Last stretch. How you adapt, read yourself, and perform when the pressure is on.",domains:["flexible-thinking","self-awareness","performance-under-pressure"]}
+  ];
   var BAND_LABEL={strength:"Strength",developing:"Developing",growth:"Growth Area"};
 
+  // Build a linear list of steps: cluster intro, then each domain screen.
+  var STEPS=[];
+  CLUSTERS.forEach(function(c,ci){
+    STEPS.push({t:"cluster",ci:ci});
+    c.domains.forEach(function(slug){ STEPS.push({t:"domain",ci:ci,slug:slug}); });
+  });
+  var TOTAL_DOMAINS=0; CLUSTERS.forEach(function(c){ TOTAL_DOMAINS+=c.domains.length; });
+
   var answers={}, pos=0, LAST=null;
-  var SCREENS=["intro","q","gate","results"];
-  function show(id){ SCREENS.forEach(function(s){var e=$(s);if(e)e.hidden=(s!==id);}); $("prog").hidden=(id!=="q"); }
+  var SCREENS=["intro","cluster","q","gate","results"];
+  function show(id){ SCREENS.forEach(function(s){var e=$(s);if(e)e.hidden=(s!==id);}); $("prog").hidden=!(id==="cluster"||id==="q"); }
 
-  function start(){ answers={}; pos=0; track("quiz_start",{source:ATTRIBUTION.utm_source||"direct"}); if(window.fbq) fbq("trackCustom","QuizStart"); renderQ(); }
+  function persist(){ try{ localStorage.setItem(SAVE_KEY, JSON.stringify({answers:answers,pos:pos})); }catch(e){} }
+  function clearSave(){ try{ localStorage.removeItem(SAVE_KEY); }catch(e){} }
 
-  function renderQ(){
+  function domainsAnswered(){
+    var n=0;
+    for(var s in DOMAINS){ if(DOMAINS[s].items.every(function(q){return answers[q]!=null;})) n++; }
+    return n;
+  }
+  function updateProg(){
+    var done=domainsAnswered();
+    $("prog-fill").style.width=Math.round(done/TOTAL_DOMAINS*100)+"%";
+  }
+
+  function start(fresh){ if(fresh){ answers={}; pos=0; clearSave(); } track("quiz_start",{source:ATTRIBUTION.utm_source||"direct"}); if(window.fbq) fbq("trackCustom","QuizStart"); showStep(); }
+
+  function showStep(){
+    if(pos>=STEPS.length){ finish(); return; }
+    var st=STEPS[pos];
+    updateProg();
+    if(st.t==="cluster") renderCluster(st); else renderDomain(st);
+    persist();
+    try{ window.scrollTo(0,0); }catch(e){}
+  }
+
+  function renderCluster(st){
+    show("cluster");
+    var c=CLUSTERS[st.ci];
+    $("prog-lbl").textContent="Part "+(st.ci+1)+" of "+CLUSTERS.length;
+    $("cl-label").textContent="Part "+(st.ci+1)+" of "+CLUSTERS.length;
+    $("cl-name").textContent=c.name;
+    $("cl-intro").textContent=c.intro;
+    $("cl-back").disabled=(pos===0);
+  }
+
+  function renderDomain(st){
     show("q");
-    var q=QUESTIONS[pos];
-    $("prog-fill").style.width=Math.round(pos/QUESTIONS.length*100)+"%";
-    $("prog-lbl").textContent="Question "+(pos+1)+" of "+QUESTIONS.length;
-    $("q-text").textContent=q.text;
-    var body=$("q-body"); body.innerHTML=""; $("q-back").disabled=(pos===0);
-    var wrap=document.createElement("div"); wrap.className="opts";
-    OPTS.forEach(function(opt){
-      var label=opt[0], val=opt[1];
-      var b=document.createElement("button"); b.className="opt"; b.textContent=label;
-      if(String(answers[q.id])===String(val)) b.classList.add("sel");
-      b.addEventListener("click",function(){ answers[q.id]=val; track("question_answered",{index:pos+1,id:q.id}); next(); });
-      wrap.appendChild(b);
+    var c=CLUSTERS[st.ci], dom=DOMAINS[st.slug];
+    $("prog-lbl").textContent="Part "+(st.ci+1)+" of "+CLUSTERS.length+": "+c.name;
+    $("q-part").textContent="Part "+(st.ci+1)+" of "+CLUSTERS.length+": "+c.name;
+    $("q-domain").textContent=dom.name;
+    var body=$("q-body"); body.innerHTML="";
+    dom.items.forEach(function(qid){
+      var row=document.createElement("div"); row.className="mrow"; row.setAttribute("data-q",qid);
+      var q=document.createElement("div"); q.className="mq"; q.textContent=QTEXT[qid]; row.appendChild(q);
+      var scale=document.createElement("div"); scale.className="scale";
+      OPTS.forEach(function(opt){
+        var b=document.createElement("button"); b.className="sc"; b.textContent=opt[2]; b.title=opt[0];
+        if(String(answers[qid])===String(opt[1])) b.classList.add("sel");
+        b.addEventListener("click",function(){ setAnswer(qid,opt[1]); });
+        scale.appendChild(b);
+      });
+      row.appendChild(scale); body.appendChild(row);
     });
-    body.appendChild(wrap);
+    $("q-back").disabled=(pos===0);
   }
-  function next(){ if(pos<QUESTIONS.length-1){ pos++; renderQ(); } else finish(); }
-  function back(){ if(pos>0){ pos--; renderQ(); } }
 
-  function domScore(dom){ var s=0; dom.items.forEach(function(qn){ s+=Number(answers["q"+qn])||0; }); return s; }
-  function bandOf(dom,score){
-    if(score<=dom.bands.strength.hi) return "strength";
-    if(score<=dom.bands.developing.hi) return "developing";
-    return "growth";
+  function setAnswer(qid,val){
+    answers[qid]=val;
+    // update just this row's buttons
+    var row=document.querySelector('#q-body .mrow[data-q="'+qid+'"]');
+    if(row){ var bs=row.querySelectorAll(".sc"); OPTS.forEach(function(opt,i){ bs[i].classList.toggle("sel",String(opt[1])===String(val)); }); }
+    track("question_answered",{id:"q"+qid});
+    persist(); updateProg();
+    // auto-advance when every item on this domain screen is answered
+    var st=STEPS[pos];
+    if(st && st.t==="domain"){
+      var dom=DOMAINS[st.slug];
+      if(dom.items.every(function(q){return answers[q]!=null;})){
+        var here=pos; setTimeout(function(){ if(pos===here) next(); }, 260);
+      }
+    }
   }
-  // strength fill: low score (strength) = full bar, high score (growth) = near empty
-  function strengthPct(dom,score){ var mn=dom.items.length, mx=dom.items.length*5; return Math.round((mx-score)/(mx-mn)*100); }
+
+  function next(){ pos++; showStep(); }
+  function back(){ if(pos>0){ pos--; showStep(); } }
+
+  // keyboard 1..5 answers the first unanswered item on the current domain screen
+  document.addEventListener("keydown",function(e){
+    if($("q").hidden) return;
+    var k=e.key; if(k<"1"||k>"5") return;
+    var st=STEPS[pos]; if(!st||st.t!=="domain") return;
+    var dom=DOMAINS[st.slug];
+    for(var i=0;i<dom.items.length;i++){ var qid=dom.items[i]; if(answers[qid]==null){ setAnswer(qid,OPTS[Number(k)-1][1]); break; } }
+  });
+
+  // ---- scoring ----
+  function domScore(dom){ var s=0; dom.items.forEach(function(q){ s+=Number(answers[q])||0; }); return s; }
+  function bandOf(dom,score){ if(score<=dom.shi) return "strength"; if(score<=dom.dhi) return "developing"; return "growth"; }
+  function strengthPct(dom,score){ var n=dom.items.length, mn=n, mx=n*5; return Math.round((mx-score)/(mx-mn)*100); }
 
   function finish(){
-    var profile=DOMAINS.map(function(dom){
-      var sc=domScore(dom), bd=bandOf(dom,sc);
-      return { slug:dom.slug, name:dom.name, score:sc, band:bd, strengthPct:strengthPct(dom,sc) };
-    });
+    var profile=[];
+    CLUSTERS.forEach(function(c){ c.domains.forEach(function(slug){
+      var dom=DOMAINS[slug], sc=domScore(dom), bd=bandOf(dom,sc);
+      profile.push({slug:slug,name:dom.name,cluster:c.key,clusterName:c.name,score:sc,band:bd,strengthPct:strengthPct(dom,sc)});
+    });});
     var strengths=profile.filter(function(p){return p.band==="strength";});
     var developing=profile.filter(function(p){return p.band==="developing";});
     var growth=profile.filter(function(p){return p.band==="growth";});
-    // primary growth = lowest strengthPct (most in the growth direction); tie -> domain order
+    var overall=Math.round(profile.reduce(function(a,p){return a+p.strengthPct;},0)/profile.length);
     var primary=profile.slice().sort(function(a,b){return a.strengthPct-b.strengthPct;})[0];
     var positive=(growth.length===0 && developing.length===0);
-    LAST={ profile:profile, strengths:strengths, developing:developing, growth:growth, primary:primary, positive:positive };
+    LAST={ profile:profile, strengths:strengths, developing:developing, growth:growth, overall:overall,
+      band:(overall>=70?"Strong":overall>=45?"Mixed":"Emerging"), primary:primary, positive:positive };
     track("email_gate_view",{outcome:positive?"all-strengths":primary.slug});
-    show("gate"); var em=$("g-email"); if(em) try{em.focus();}catch(e){}
+    show("gate"); $("prog").hidden=true; var em=$("g-email"); if(em) try{em.focus();}catch(e){}
   }
 
   function bandColor(band){ return band==="strength"?"var(--gd)":band==="developing"?"var(--gold)":"var(--red)"; }
+  function names(list,n){ return list.slice(0,n||list.length).map(function(p){return p.name;}); }
 
   function renderResults(){
     show("results");
+    $("r-idx").textContent=LAST.overall;
+    $("r-idxbar").style.width=LAST.overall+"%";
     var ns=LAST.strengths.length, nd=LAST.developing.length, ng=LAST.growth.length;
     function plural(n,w){ return n+" "+w+(n===1?"":"s"); }
-    var parts=[];
-    if(ns) parts.push(plural(ns,"strength"));
-    if(nd) parts.push(nd+" developing");
-    if(ng) parts.push(plural(ng,"growth area"));
-    $("r-sub").textContent="Across fourteen executive functioning skills: "+parts.join(", ")+".";
-    var strongest=LAST.profile.slice().sort(function(a,b){return b.strengthPct-a.strengthPct;})[0];
+    var parts=[]; if(ns) parts.push(plural(ns,"strength")); if(nd) parts.push(nd+" developing"); if(ng) parts.push(plural(ng,"growth area"));
+    $("r-sub").textContent="Across fourteen skills in four areas: "+parts.join(", ")+".";
     $("r-overall").textContent=LAST.positive
-      ? "Every one of your fourteen skills is landing in the strength range right now. That is a genuine asset."
-      : "Your strongest area is "+strongest.name+". The area with the most room to grow is "+LAST.primary.name+".";
+      ? "That is a strong overall picture. Every skill is landing in the strength range right now."
+      : (LAST.band==="Strong"?"That is a strong overall picture, with a few clear places to sharpen."
+        :LAST.band==="Mixed"?"A solid foundation with real strengths and a few areas worth focused work."
+        :"There is a lot to build here, and that is workable. Executive functioning is a set of skills, not fixed traits.");
 
+    // strengths-first summary blocks
+    var byStrength=LAST.profile.slice().sort(function(a,b){return b.strengthPct-a.strengthPct;});
+    var topStrengths=(LAST.strengths.length?LAST.strengths:byStrength.slice(0,3));
+    var topGrowth=(LAST.growth.length?LAST.growth.slice():byStrength.slice(-2).reverse());
+    var sum=$("r-summary"); sum.innerHTML="";
+    var win=document.createElement("div"); win.className="summary win";
+    win.innerHTML="<b>Your strengths</b>"+names(topStrengths,4).join(", ")+".";
+    sum.appendChild(win);
+    if(!LAST.positive){
+      var foc=document.createElement("div"); foc.className="summary focus";
+      foc.innerHTML="<b>Where to focus</b>"+names(topGrowth,3).join(", ")+".";
+      sum.appendChild(foc);
+    }
+
+    // bars grouped by cluster, strengths-first within cluster
     var bars=$("r-bars"); bars.innerHTML="";
-    LAST.profile.forEach(function(p){
-      var color=bandColor(p.band);
-      var row=document.createElement("div"); row.className="barrow";
-      row.innerHTML='<div class="barhead"><span class="nm">'+p.name+'</span><span class="lv" style="color:'+color+'">'+BAND_LABEL[p.band]+'</span></div>'+
-        '<div class="bartrack"><div class="barfill" style="width:'+p.strengthPct+'%;background:'+color+'"></div></div>';
-      bars.appendChild(row);
+    CLUSTERS.forEach(function(c){
+      var doms=LAST.profile.filter(function(p){return p.cluster===c.key;}).sort(function(a,b){return b.strengthPct-a.strengthPct;});
+      var h=document.createElement("div"); h.className="clh"; h.textContent=c.name; bars.appendChild(h);
+      doms.forEach(function(p){
+        var color=bandColor(p.band);
+        var row=document.createElement("div"); row.className="barrow";
+        row.innerHTML='<div class="barhead"><span class="nm">'+p.name+'</span><span class="lv" style="color:'+color+'">'+BAND_LABEL[p.band]+'</span></div>'+
+          '<div class="bartrack"><div class="barfill" style="width:'+p.strengthPct+'%;background:'+color+'"></div></div>';
+        bars.appendChild(row);
+      });
     });
 
+    // detail cards grouped by cluster, strengths-first within cluster
     var body=$("r-body"); body.innerHTML="";
-    LAST.profile.forEach(function(p){
-      var color=bandColor(p.band);
-      var card=document.createElement("div"); card.className="dcard";
-      card.innerHTML='<div class="dh">'+p.name+' <span class="bd" style="color:'+color+'">'+BAND_LABEL[p.band]+'</span></div>'+
-        '<p>'+COPY[p.slug][p.band]+'</p>';
-      body.appendChild(card);
+    CLUSTERS.forEach(function(c){
+      var doms=LAST.profile.filter(function(p){return p.cluster===c.key;}).sort(function(a,b){return b.strengthPct-a.strengthPct;});
+      var h=document.createElement("div"); h.className="clh"; h.textContent=c.name; body.appendChild(h);
+      doms.forEach(function(p){
+        var dom=DOMAINS[p.slug], color=bandColor(p.band);
+        var card=document.createElement("div"); card.className="dcard";
+        card.innerHTML='<div class="dh">'+p.name+' <span class="bd" style="color:'+color+'">'+BAND_LABEL[p.band]+'</span></div>'+
+          '<p>'+dom.def+' '+dom.copy[p.band]+'</p>';
+        body.appendChild(card);
+      });
     });
 
     var bk=$("r-book"); bk.href=BOOKING_URL;
@@ -359,6 +473,7 @@
     if(!emailValid(email)||!$("g-consent").checked){ var e=$("g-err"); e.hidden=false; e.textContent="Please enter a valid email and check the box."; return; }
     $("g-err").hidden=true; $("g-go").disabled=true; $("g-go").textContent="Loading your results…";
     var slug=LAST.positive?"all-strengths":LAST.primary.slug;
+    clearSave();
     track("lead_submit",{}); track("quiz_complete",{outcome:slug}); track("outcome",{outcome:slug});
     if(window.fbq) fbq("track","Lead");
     renderResults();
@@ -368,6 +483,7 @@
       fetch(LEAD_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({
         firstName:firstName, email:email, consent:true, audience:"efassess",
         archetype:slug, archetypeName:"Executive Function Assessment", positive:LAST.positive,
+        overall:LAST.overall, band:LAST.band,
         strengths:LAST.strengths.map(function(p){return p.name;}),
         developing:LAST.developing.map(function(p){return p.name;}),
         growth:LAST.growth.map(function(p){return p.name;}),
@@ -379,13 +495,24 @@
   }
 
   function init(){
-    $("start").addEventListener("click",start);
+    // resume support
+    var saved=null; try{ saved=JSON.parse(localStorage.getItem(SAVE_KEY)||"null"); }catch(e){}
+    if(saved && saved.answers && Object.keys(saved.answers).length && typeof saved.pos==="number" && saved.pos<STEPS.length){
+      answers=saved.answers; pos=saved.pos;
+      $("resume").hidden=false; $("startover").hidden=false;
+      $("start").hidden=true;
+    }
+    $("resume").addEventListener("click",function(){ start(false); });
+    $("startover").addEventListener("click",function(){ start(true); });
+    $("start").addEventListener("click",function(){ start(true); });
+    $("cl-go").addEventListener("click",next);
+    $("cl-back").addEventListener("click",back);
     $("q-back").addEventListener("click",back);
     $("g-email").addEventListener("input",gateState);
     $("g-consent").addEventListener("change",gateState);
     $("g-go").addEventListener("click",submitLead);
     $("g-email").addEventListener("keydown",function(e){ if(e.key==="Enter"&&!$("g-go").disabled) submitLead(); });
-    $("r-retake").addEventListener("click",start);
+    $("r-retake").addEventListener("click",function(){ start(true); });
     show("intro");
   }
   if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",init); else init();
